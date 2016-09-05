@@ -4,9 +4,10 @@ BUILDDIR := build
 TARGET :=bin/dungeon
 
 SRCEXT := cpp
-SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT)
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g -Wall
+COPT := -std=c++11
 LIB := -L lib -lJsonBox
 INC := -I include -I include/JsonBox
 
@@ -16,7 +17,7 @@ $(TARGET): $(OBJECTS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
-	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $(CFLAGS) $(INC) $(COPT) -c -o $@ $<
 
 clean:
 	@echo " cleaning..."

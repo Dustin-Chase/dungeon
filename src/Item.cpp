@@ -1,8 +1,8 @@
 #include <string>
 #include <JsonBox.h>
 
-#include "item.hpp"
-#include "entity.hpp"
+#include "Item.hpp"
+#include "Entity.hpp"
 #include "EntityManager.hpp"
 
 Item::Item(std::string id, std::string name, std::string description) : Entity(id) {

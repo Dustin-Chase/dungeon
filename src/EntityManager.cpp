@@ -34,7 +34,7 @@ EntityManager::EntityManager() {}
 
 EntityManager::~EntityManager() {
 	
-	for (auto& it : this->data) {
+	for (auto& entity : this->data) {
 		delete entity.second; 
 	}
 }
