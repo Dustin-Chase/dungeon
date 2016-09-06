@@ -1,13 +1,11 @@
 {
-	"weapon_dagger": {
-		"name": "Dagger",
-		"damage": 2,
-		"description": "A small blade, probably made of iron. Keep the sharp end away from your body."
+	"item_gold_coin": {
+		"name": "Gold Coin",
+		"description": "A small disc made of lustrous metal"
 	},
 
-	"weapon_rat_claw": {
-		"name": "_rat_claw",
-		"damage": 1,
-		"description": ""
+	"item_iron_key": {
+		"name": "Iron Key",
+		"description": "A heavy iron key with a simple cut"
 	}
 }

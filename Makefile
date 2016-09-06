@@ -17,12 +17,11 @@ $(TARGET): $(OBJECTS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
-	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $(CFLAGS) $(INC) $(COPT) -c -o $@ $<
+	@echo " $(CC) $(CFLAGS) $(INC) $(COPT) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) $(COPT) -c -o $@ $<
 
 clean:
 	@echo " cleaning..."
 	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
-
 
 
 

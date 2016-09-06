@@ -16,7 +16,7 @@ class Entity {
 	}
 
 	virtual ~Entity() {}
-	virtual void loadJson(JsonBox::Value& v, EntityManager* mgr) = 0; 
+	virtual void load(JsonBox::Value& v, EntityManager* mgr) = 0; 
 
 };
 

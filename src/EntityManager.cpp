@@ -1,6 +1,7 @@
+#include <iostream>
 #include <string>
 #include <map>
-
+#include "Item.hpp"
 #include "EntityManager.hpp"
 
 template<class T>
@@ -10,7 +11,7 @@ void EntityManager::loadJson(std::string filename) {
 	
 	JsonBox::Object o = v.getObject();
 	for(auto entity : o) {
-		std::string key = entity.first; 
+		std::string key = entity.first;  		
 		this->data[key] = dynamic_cast<Entity*>(new T(key, entity.second, this)); 
 	}
 
@@ -33,8 +34,12 @@ T* EntityManager::getEntity(std::string id) {
 EntityManager::EntityManager() {}
 
 EntityManager::~EntityManager() {
-	
+		
 	for (auto& entity : this->data) {
-		delete entity.second; 
+		std::cout << "Deleting " << entity.first << "\n";
+		std::cout << "Printing " << entity.second->id << "\n"; 
+		delete entity.second;		
 	}
 }
+
+template void EntityManager::loadJson<Item>(std::string);
