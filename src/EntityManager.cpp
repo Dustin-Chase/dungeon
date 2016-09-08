@@ -1,8 +1,13 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include "Armor.hpp"
 #include "Item.hpp"
+#include "Weapon.hpp"
 #include "EntityManager.hpp"
+#include "Creature.hpp"
+#include "Area.hpp"
+#include "Door.hpp"
 
 template<class T>
 void EntityManager::loadJson(std::string filename) {
@@ -37,9 +42,33 @@ EntityManager::~EntityManager() {
 		
 	for (auto& entity : this->data) {
 		std::cout << "Deleting " << entity.first << "\n";
-		std::cout << "Printing " << entity.second->id << "\n"; 
+		std::cout << "d!! " << entity.second->id << "\n"; 
 		delete entity.second;		
 	}
 }
 
+// Template specialisations
+template <> std::string entityToString<Item>() { return "item"; }
+template <> std::string entityToString<Weapon>() { return "weapon"; }
+template <> std::string entityToString<Armor>() { return "armor"; }
+template <> std::string entityToString<Creature>() { return "creature"; }
+template <> std::string entityToString<Area>() { return "area"; }
+template <> std::string entityToString<Door>() { return "door"; }
+
+//template instantiations
 template void EntityManager::loadJson<Item>(std::string);
+template void EntityManager::loadJson<Weapon>(std::string);
+template void EntityManager::loadJson<Armor>(std::string); 
+
+template void EntityManager::loadJson<Creature>(std::string);
+template void EntityManager::loadJson<Area>(std::string);
+template void EntityManager::loadJson<Door>(std::string);
+
+template Item* EntityManager::getEntity<Item>(std::string);
+template Weapon* EntityManager::getEntity<Weapon>(std::string);
+template Armor* EntityManager::getEntity<Armor>(std::string);
+
+template Creature* EntityManager::getEntity<Creature>(std::string);
+template Area* EntityManager::getEntity<Area>(std::string);
+template Door* EntityManager::getEntity<Door>(std::string);
+
